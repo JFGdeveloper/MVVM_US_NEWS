@@ -9,5 +9,5 @@ private const val APY_KEY = "7c70bd01254141808e75d0a7d0e12e04"
 
 interface NewsProvider{
     @GET("top-headlines?apiKey=$APY_KEY")
-    suspend fun NewsProvider(@Query("country") country: String): Response<NewsApiResponse>
+    suspend fun topHeadLines(@Query("country") country: String): Response<NewsApiResponse>
 }

@@ -1,5 +1,6 @@
 package com.javidev.mvvm_compose.di
 
+import com.javidev.mvvm_compose.data.provider.NewsProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,4 +29,12 @@ class ProvideModule {
             .baseUrl(baseUrl)
             .build()
     }
+
+    @Provides
+    @Singleton
+    fun provideNewProvider(retrofit: Retrofit): NewsProvider{
+        return retrofit.create(NewsProvider::class.java)
+    }
 }
+
+//todo ver por el minuto 15 para seguir 
