@@ -11,6 +11,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.javidev.mvvm_compose.presentation.screens.listScreen.ListScreen
+import com.javidev.mvvm_compose.presentation.screens.navigation.AppNavigation
+import com.javidev.mvvm_compose.presentation.screens.navigation.MyApp
 import com.javidev.mvvm_compose.presentation.ui.theme.MVVM_COMPOSETheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,9 +25,7 @@ class MainActivity : ComponentActivity() {
             MVVM_COMPOSETheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-
-                    val navController = rememberNavController()
-                    ListScreen(navController = navController)
+                    MyApp()
                 }
             }
         }

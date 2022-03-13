@@ -37,7 +37,7 @@ fun ListScreen(
     navController: NavController,
     viewModel: ListScreenViewModel = hiltViewModel()
 ) {
-    val news = viewModel.news
+    val news = viewModel.getNews()
     MyScaffold(news = news)
 }
 

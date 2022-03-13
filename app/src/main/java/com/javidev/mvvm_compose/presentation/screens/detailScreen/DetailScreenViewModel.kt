@@ -1,11 +1,8 @@
-package com.javidev.mvvm_compose.presentation.screens.listScreen
+package com.javidev.mvvm_compose.presentation.screens.detailScreen
 
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.javidev.mvvm_compose.data.model.News
@@ -16,25 +13,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ListScreenViewModel @Inject constructor(
+class DetailScreenViewModel
+@Inject constructor(
     private val repository: NewRepository
 ): ViewModel() {
 
-    //private val _news = MutableLiveData<List<News>>()
     // nueva manera en compose
-    var  news: SnapshotStateList<News> = mutableStateListOf()
-     private set
+    var  news = mutableStateListOf<News>()
+        private set
 
-     //@JvmName("getNews1")
-     fun getNews(): List<News> {
+    fun getNewByTitle(title: String): News {
         viewModelScope.launch (Dispatchers.IO){
-            // llenamos la lista
-            val new: List<News> = repository.getNews("US")
-            news.addAll(new)
-            // ahora cogemos una de la lista
+            val new: News = repository.getNew( title)
+            news.add(new)
         }
-        return news
+        return news[news.size]
     }
+
 
 
 }
