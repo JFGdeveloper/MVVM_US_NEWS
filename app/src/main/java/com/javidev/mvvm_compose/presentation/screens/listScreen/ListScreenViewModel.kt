@@ -23,20 +23,24 @@ class ListScreenViewModel @Inject constructor(
     //private val _news = MutableLiveData<List<News>>()
 
     // nueva manera en compose
-    var  news = mutableStateListOf<List<News>>(emptyList())
+    var  news: SnapshotStateList<News> = mutableStateListOf()
      private set
 
      @JvmName("getNews1")
-     fun getNews(): SnapshotStateList<List<News>> {
+     fun getNews(): SnapshotStateList<News> {
         viewModelScope.launch (Dispatchers.IO){
             /*
             val news = repository.getNews("US")
             _news.postValue(news)
              */
             val new: List<News> = repository.getNews("US")
-            news.add(new)
+            news.addAll(new)
         }
         return news
+    }
+
+    init {
+        getNews()
     }
 
 }
