@@ -29,6 +29,7 @@ import coil.compose.AsyncImage
 
 import com.javidev.mvvm_compose.R
 import com.javidev.mvvm_compose.data.model.News
+import com.javidev.mvvm_compose.presentation.screens.common.MyCard
 
 
 @Composable
@@ -37,72 +38,14 @@ fun ListScreen(
     viewModel: ListScreenViewModel = hiltViewModel()
 ) {
     val news = viewModel.news
-
-    Scaffold( news)
-
-
-}
-
-@Composable
-private fun Scaffold( news: List<News>) {
-
-
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text(text = stringResource(id = R.string.app_name)) })
-        }
-    ) {
-        LazyColumn {
-            items(news) { new ->
-                MyCard(new)
-            }
-        }
-
-    }
-}
-
-@ExperimentalCoilApi
-@Composable
-private fun MyCard(new: News) {
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-            .clickable {
-                //todo navegar a screen next
-            },
-        shape = RoundedCornerShape(12.dp),
-        elevation = 12.dp,
-        border = BorderStroke(1.dp, MaterialTheme.colors.primary)
-
-    ) {
-
-        Column {
-            AsyncImage(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .padding(6.dp),
-                model = new.urlToImage,
-                contentDescription = null,
-                contentScale = ContentScale.FillWidth
-            )
-
-
-            Column(modifier = Modifier.fillMaxWidth().padding(6.dp)) {
-                new.title?.let { Text(text = it, fontSize = 18.sp, fontWeight = FontWeight.Bold) }
-                new.content?.let {  Text(text = it, maxLines = 3, overflow = TextOverflow.Ellipsis) }
-            }
-        }
-
-    }
+    MyScaffold(news = news)
 }
 
 
 @Preview
 @Composable
 fun PrevListScreen() {
-    Scaffold(
+    MyScaffold(
         news = arrayListOf(
             News(
                 "yo",
