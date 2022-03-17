@@ -24,13 +24,15 @@ import com.javidev.mvvm_compose.data.model.News
 
 @ExperimentalCoilApi
 @Composable
- fun MyCard(new: News) {
+ fun MyCard(new: News,modifier: Modifier= Modifier,onClick: ()->Unit = {}) {
     Card(
-        modifier = Modifier
+        modifier = modifier
             .padding(8.dp)
             .fillMaxWidth()
             .clickable {
-                //todo navegar a screen next
+                  onClick()
+                // todo pasar el title por aqui
+
             },
         shape = RoundedCornerShape(12.dp),
         elevation = 12.dp,

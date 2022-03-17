@@ -26,7 +26,7 @@ class ListScreenViewModel @Inject constructor(
      private set
 
      //@JvmName("getNews1")
-     fun getNews(): List<News> {
+     fun getNews(): MutableList<News> {
         viewModelScope.launch (Dispatchers.IO){
             // llenamos la lista
             val new: List<News> = repository.getNews("US")
