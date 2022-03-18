@@ -84,8 +84,8 @@ private fun DetailContent(new: News?, navController: NavController,context:Conte
 
         }?: run {
             Box(
-                modifier = Modifier.fillMaxWidth(),
-                contentAlignment = Alignment.CenterEnd
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
             ){
                 //ProgressIndicatorDefaults
                 CircularProgressIndicator()
