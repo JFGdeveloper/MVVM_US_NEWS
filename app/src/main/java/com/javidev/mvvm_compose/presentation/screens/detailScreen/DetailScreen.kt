@@ -105,7 +105,7 @@ fun PrevDetailScreen() {
         "el campeos",
         "llalalalalalallalal",
         "jsjsjsjjs",
-        R.drawable.icons8_android_os_64.toString()
+        R.drawable.america_4628631_640.toString()
     )
     DetailContent(new, rememberNavController(), LocalContext.current)
 }
